@@ -4,67 +4,43 @@ import os
 import scipy.optimize as opt
 
 
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
 
-class LogisiticRegression:
 
-    def __init__(self, X, y, tolerance=1e-5):
-        """
+def cost(theta, X, y):
+    theta = np.matrix(theta)
+    x_theta = X * theta.T
+    h_x = sigmoid(x_theta)
+    part1 = np.multiply(-y, np.log(h_x))
+    part2 = np.multiply((1 - y), np.log(1 - h_x))
+    return np.sum(part1 - part2) / (len(X))
 
-        :param theta:
-        :param X:
-        :param y:
-        """
-        self.tolerance = tolerance
-        self.X = np.matrix(X)
-        self.y = np.matrix(y)
-        self.theta = np.zeros(X.shape[1])
-        self.likelihood_history = []
-        self.m = len(y)
 
-    def cost(self):
-        self.theta = np.matrix(self.theta)
-        first = np.multiply(-self.y, np.log(self.sigmoid(self.X * self.theta.T)))
-        second = np.multiply((1 - self.y), np.log(1 - self.sigmoid(self.X * self.theta.T)))
-        return np.sum(first - second) / (len(X))
+def gradient(theta, X, y):
+    theta = np.matrix(theta)
+    x_theta = X * theta.T
+    h_x = sigmoid(x_theta)
+    return (h_x - y).T * X / len(X)
 
-    def sigmoid(self,z):
-        return 1 / (1 + np.exp(-z))
 
-    def gradient(self):
-        theta = np.matrix(self.theta)
-        parameters = int(theta.ravel().shape[1])
-        grad = np.zeros(parameters)
-        error = self.sigmoid(self.X * theta.T) - self.y
-        for i in range(parameters):
-            term = np.multiply(error, self.X[:, i])
-            grad[i] = np.sum(term) / len(self.X)
-        print grad
-        return np.matrix(grad)
+def predict(theta, X):
+    probability = sigmoid(X * theta.T)
+    return [1 if x >= 0.5 else 0 for x in probability]
 
-    def gradient_decent(self, alpha=0.0001, max_iterations=10):
-        """Runs the gradient decent algorithm
 
-        Parameters
-        ----------
-        alpha : float
-            The learning rate for the algorithm
-
-        max_iterations : int
-            The maximum number of iterations allowed to run before the algorithm terminates
-
-        """
-        previous_likelihood = self.cost()
-        difference = self.tolerance + 1
-        converged = False
-        iteration = 0
-        while not converged:
-            self.theta = self.theta - (self.gradient() * alpha)
-            temp = self.cost()
-            difference = np.abs(temp - previous_likelihood)
-            previous_likelihood = temp
-            self.likelihood_history.append(previous_likelihood)
-            iteration += 1
-
+def gradient_decent(theta, X, y, alpha=1e-7, max_iterations=1e4):
+    tolerance = 1e-7
+    cost_val = cost(theta, X, y)
+    difference = tolerance + 1
+    iteration = 0
+    while (difference > tolerance) and (iteration < max_iterations):
+        theta = theta + alpha * gradient(theta, X, y)
+        temp = cost(theta, X, y)
+        difference = np.abs(temp - cost_val)
+        cost_val = temp
+        iteration += 1
+    return theta
 
 if __name__ == "__main__":
 
@@ -75,15 +51,28 @@ if __name__ == "__main__":
     X = data.iloc[:,0:cols-1]
     y = data.iloc[:,cols-1:cols]
 
-    X = np.array(X.values)
-    y = np.array(y.values)
+    X = np.matrix(np.array(X.values))
+    y = np.matrix(np.array(y.values))
 
     n = X.shape[1]
 
     theta = np.zeros(n)
+    print cost(theta, X, y)
 
-    lg = LogisiticRegression(X,y)
-    lg.gradient_decent()
-    print lg.theta
-    print lg.cost()
+    result = opt.fmin_tnc(func=cost, x0=theta, fprime=gradient, args=(X, y))
+    theta_min = np.matrix(result[0])
+    print result
+
+    predictions = predict(theta_min, X)
+    correct = [1 if ((a == 1 and b == 1) or (a == 0 and b == 0)) else 0 for (a, b) in zip(predictions, y)]
+    accuracy = (sum(map(int, correct)) % len(correct))
+
+    print 'accuracy = {0}%'.format(accuracy)
+
+    theta_min = gradient_decent(theta, X, y)
+    predictions = predict(theta_min, X)
+    correct = [1 if ((a == 1 and b == 1) or (a == 0 and b == 0)) else 0 for (a, b) in zip(predictions, y)]
+    accuracy = (sum(map(int, correct)) % len(correct))
+
+    print 'accuracy = {0}%'.format(accuracy)
 
