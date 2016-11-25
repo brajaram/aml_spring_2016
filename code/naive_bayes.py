@@ -107,6 +107,37 @@ def get_accuracy(test_set, predictions):
             correct += 1
     return (correct/float(len(test_set))) * 100.0
 
+# calculate a confusion matrix
+def confusion_matrix(actual, predicted):
+    #print 'actual : ', actual
+    #print 'predicted : ', predicted
+    actuals = []
+    for x in range(len(actual)):
+        actuals.append(actual[x][-1])
+    unique = set(actuals)
+    matrix = [list() for x in range(len(unique))]
+    for i in range(len(unique)):
+        matrix[i] = [0 for x in range(len(unique))]
+    lookup = dict()
+    for i, value in enumerate(unique):
+        lookup[value] = i
+        #lookup[i] = value
+    #print 'lookup : ', lookup
+
+    for i in range(len(actuals)):
+        x = lookup[actuals[i]]
+        #print 'x : ', str(x)
+        y = lookup[predicted[i]]
+        matrix[x][y] += 1
+    return unique, matrix
+
+# pretty print a confusion matrix
+def print_confusion_matrix(unique, matrix):
+    print('(P)' + ' '.join(str(x) for x in unique))
+    print('(A)---')
+    for i, x in enumerate(unique):
+        print("%s| %s" % (x, ' '.join(str(x) for x in matrix[i])))
+
 def main(filename):
     split_ratio = 0.70
     dataset = load_csv(filename)
@@ -118,6 +149,10 @@ def main(filename):
     predictions = get_predictions(summaries, test_set)
     accuracy = get_accuracy(test_set, predictions)
     print('Accuracy: {0}%').format(accuracy)
+
+    #Confusion Matrix
+    unique, matrix = confusion_matrix(test_set,predictions)
+    print_confusion_matrix(unique, matrix)
 
 if __name__ == '__main__':
     print 'Naive Bayes'
@@ -175,6 +210,16 @@ if __name__ == '__main__':
     print('Accuracy: {0}').format(accuracy)
     '''
 
+
+    '''
+    # Test confusion matrix with integers
+    actual = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1,3,5]
+    predicted = [0, 1, 1, 0, 0, 1, 0, 1, 1, 1,0,5]
+    unique, matrix = confusion_matrix(actual, predicted)
+    print(unique)
+    print(matrix)
+    print_confusion_matrix(unique, matrix)
+    '''
 
     '''
     Run the algo for actual dataset
