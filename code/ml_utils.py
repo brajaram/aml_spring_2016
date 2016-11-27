@@ -48,6 +48,7 @@ def str_columns_to_float(dataset, col_start=0, col_end=999):
 Find the min and max values for each column
 '''
 def dataset_minmax(dataset):
+    print 'Find min and max for each column in dataset'
     minmax = list()
     for i in range(len(dataset[0])):
         col_values = [row[i] for row in dataset]
@@ -62,9 +63,23 @@ Rescale dataset columns to the range 0-1
 Avoid devide by zero situation
 '''
 def normalize_dataset(dataset, minmax):
+    print 'Perform normalization\n'
     for row in dataset:
         for i in range(len(row)):
-            row[i] = (row[i] - minmax[i][0]) / (minmax[i][1] - minmax[i][0])
+            if minmax[i][1] != 0:
+                row[i] = (row[i] - minmax[i][0]) / (minmax[i][1] - minmax[i][0])
+    return dataset
+
+'''
+Rescale dataset columns to the range 0-1
+Avoid devide by zero situation
+'''
+def normalize_dataset_skip_last_col(dataset, minmax):
+    print 'Perform normalization\n'
+    for row in dataset:
+        for i in range(len(row)-1):
+            if minmax[i][1] != 0:
+                row[i] = (row[i] - minmax[i][0]) / (minmax[i][1] - minmax[i][0])
     return dataset
 
 '''
@@ -132,6 +147,14 @@ def euclidean_distance(row1, row2):
         distance += (row1[i] - row2[i]) ** 2
     return math.sqrt(distance)
 
+'''
+calculate the Euclidean distance between two vectors
+'''
+def euclidean_distance_skip_last_col(row1, row2):
+    distance = 0.0
+    for i in range(len(row1)-2):
+        distance += (row1[i] - row2[i]) ** 2
+    return math.sqrt(distance)
 
 '''
 Calculate accuracy percentage

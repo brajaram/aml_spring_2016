@@ -43,7 +43,7 @@ Number of Neighbours to be selected is parameterized
 def get_neighbors(train, test_row, num_neighbors):
     distances = list()
     for train_row in train:
-        dist = utils.euclidean_distance(test_row, train_row)
+        dist = utils.euclidean_distance_skip_last_col(test_row, train_row)
         #A list of tuples
         distances.append((train_row, dist))
     distances.sort(key=lambda tup: tup[1])
@@ -86,6 +86,9 @@ def k_nearest_neighbors(train, test, num_neighbors):
         predictions.append(output)
     return predictions
 
+'''
+Main flow for knn algo execution
+'''
 def main(filename, cat_string_cols_pos=8, n_folds=5, num_neighbors=5):
     dataset = utils.load_csv(filename)
     cols = cat_string_cols_pos.split(',')
@@ -95,10 +98,16 @@ def main(filename, cat_string_cols_pos=8, n_folds=5, num_neighbors=5):
         for col in cols:
             lookup, dataset = utils.cat_str_column_to_int(dataset, int(col))
             print 'Unique Values in {0}th col is : {1}'.format(col, lookup)
-    #lookup, dataset = utils.cat_str_column_to_int(dataset, 8)
-    #print 'Unique Values in 0th col : ', lookup
+
     dataset = utils.str_columns_to_float(dataset)
     #print 'dataset with float values:\n', dataset
+
+    #Normalize the variable values to avoid bias toward any particular variable
+    minmax = utils.dataset_minmax(dataset)
+    print 'min and max for each column : \n', minmax
+    dataset = utils.normalize_dataset_skip_last_col(dataset, minmax)
+
+    #print 'Normalized dataset : \n', dataset
 
     # evaluate algorithm
     scores = evaluate_algorithm(dataset, k_nearest_neighbors, n_folds, num_neighbors)
@@ -110,14 +119,13 @@ if __name__ == '__main__':
     print 'Last Column of the Dataset has to be the predicted columns\n'
     print '\n******Arguments******\n1. Filename (mandatory)\n2. Column Positions for Categorical String variables as comma separated values(optional)'
     print '3. N for N fold validation (optional)\n4. K for selecting K neoghbours (optional)\n'
-    print '\n****#2 is mandatory if subsequent parameter is to be passed. In that case, pass it as na if there is not string variable*****'
-    print 'Sample execution : \npython knn.py creditdata.csv 8'
-    #ToDo : Improve the above feature
+    print '****#2 is mandatory if subsequent parameter is to be passed. In that case, pass it as na if there is not string variable*****'
+    print '\nSample execution : \npython knn.py creditdata.csv 8'
+    # ToDo : Improve the above feature
 
     random.seed(1)
     filename = sys.argv[1]
     print '\nFile Name is : ', filename
-    #filename = 'abalone.csv'
     cat_string_cols_pos = sys.argv[2]
     print '\ncat_string_cols_pos : ', cat_string_cols_pos
     main(filename, cat_string_cols_pos)
