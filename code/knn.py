@@ -111,6 +111,7 @@ if __name__ == '__main__':
     print '\n******Arguments******\n1. Filename (mandatory)\n2. Column Positions for Categorical String variables as comma separated values(optional)'
     print '3. N for N fold validation (optional)\n4. K for selecting K neoghbours (optional)\n'
     print '\n****#2 is mandatory if subsequent parameter is to be passed. In that case, pass it as na if there is not string variable*****'
+    print 'Sample execution : \npython knn.py creditdata.csv 8'
     #ToDo : Improve the above feature
 
     random.seed(1)
