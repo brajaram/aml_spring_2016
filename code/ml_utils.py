@@ -17,7 +17,7 @@ Convert string column to integer
 dataset and column position are inputs
 To convert multiple columns, it has to be called multiple times
 '''
-def str_column_to_int(dataset, column):
+def cat_str_column_to_int(dataset, column):
     class_values = [row[column] for row in dataset]
     unique = set(class_values)
     lookup = dict()
@@ -59,6 +59,7 @@ def dataset_minmax(dataset):
 
 '''
 Rescale dataset columns to the range 0-1
+Avoid devide by zero situation
 '''
 def normalize_dataset(dataset, minmax):
     for row in dataset:
@@ -67,7 +68,7 @@ def normalize_dataset(dataset, minmax):
     return dataset
 
 '''
-Split Dataset into two - training and test - based on ratio given
+Split Dataset into two sets - training and test - based on ratio given
 '''
 def split_dataset(dataset, split_ratio):
     train_size = int(len(dataset) * split_ratio)
@@ -93,6 +94,7 @@ def cross_validation_split(dataset, n_folds):
             fold.append(dataset_copy.pop(index))
         dataset_split.append(fold)
     return dataset_split
+
 
 '''
 Group the records based on available classes in Y
