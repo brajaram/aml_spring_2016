@@ -3,52 +3,46 @@ import sys
 import random
 import math
 import pandas as pd
+import numpy as np
 
 def load_csv(filename):
-    lines = csv.reader(open(filename, "rb"))
-    '''
-    lines type :  <type '_csv.reader'>
-    '''
-    print '\nlines type : ', type(lines)
-    '''
-    use pandas to read csv file
-    l type :  <class 'pandas.core.frame.DataFrame'>
-    '''
-    l = pd.read_csv(filename)
-    print '\nl type : ', type(l)
+    df = pd.read_csv(filename)
+    print '\nl type : ', type(df)
+    no_of_columns = len(df.columns)
+    print '\nNumber of columns: ', no_of_columns
+    for idx, name in enumerate(df.columns, start=1):
+        if idx != no_of_columns:
+            df[name] = df[name].astype(float)
+    return df
 
-    dataset = list(lines)
-    for i in range(len(dataset)):
-        dataset[i] = [float(x) for x in dataset[i]]
-    return dataset
 
 def split_dataset(dataset, split_ratio):
-    train_size = int(len(dataset) * split_ratio)
-    train_set = []
-    copy = list(dataset)
-    while len(train_set) < train_size:
-        index = random.randrange(len(copy))
-        train_set.append(copy.pop(index))
+    msk = np.random.rand(len(dataset)) < split_ratio 
+    train_set = dataset[msk]
+    test_set = dataset[~msk]
+    return train_set, test_set
 
-    return train_set, copy
 
 def separate_by_class(dataset):
     separated = {}
-    for i in range(len(dataset)):
-        vector = dataset[i]
-        if (vector[-1] not in separated):
-            separated[vector[-1]] = []
-        separated[vector[-1]].append(vector)
+    no_of_columns = len(dataset.columns) - 2
+    class_col_nm = dataset.columns[-1]
+    unique_classes = dataset[class_col_nm].unique()
+    #initiate dictionary with classes as key
+    for class_value in unique_classes:
+        separated[class_value] = dataset[dataset[class_col_nm] == class_value].iloc[:,0:no_of_columns].values.tolist()
     return separated
 
 
 def mean(numbers):
     return sum(numbers)/float(len(numbers))
 
+
 def stdev(numbers):
     avg = mean(numbers)
     variance = sum([pow(x - avg,2) for x in numbers])/float(len(numbers) - 1)
     return math.sqrt(variance)
+
 
 def summarize(dataset):
     #The zip function groups the values for each attribute across our data instances into their own lists
@@ -57,6 +51,7 @@ def summarize(dataset):
     #What is this for?
     del summaries[-1]
     return summaries
+
 
 def summarize_by_class(dataset):
     separated = separate_by_class(dataset)
@@ -73,7 +68,6 @@ def calculate_probability(x, mean, stdev):
     return (1 / (math.sqrt(2*math.pi) * stdev)) * exponent
 
 
-
 def calculate_class_probabilities(summaries, input_vector):
     probabilities = {}
     for class_value, class_summaries in summaries.iteritems():
@@ -84,6 +78,7 @@ def calculate_class_probabilities(summaries, input_vector):
             probabilities[class_value] *= calculate_probability(x, mean, stdev)
     return probabilities
 
+
 def predict(summaries, input_vector):
     probabilities = calculate_class_probabilities(summaries, input_vector)
     bestLabel, bestProb = None, -1
@@ -93,6 +88,7 @@ def predict(summaries, input_vector):
             bestLabel = classValue
     return bestLabel
 
+
 def get_predictions(summaries, test_set):
     predictions = []
     for i in range(len(test_set)):
@@ -100,12 +96,14 @@ def get_predictions(summaries, test_set):
         predictions.append(result)
     return predictions
 
+
 def get_accuracy(test_set, predictions):
     correct = 0
-    for x in range(len(test_set)):
+    for x in xrange(len(test_set)):
         if test_set[x][-1] == predictions[x]:
             correct += 1
     return (correct/float(len(test_set))) * 100.0
+
 
 # calculate a confusion matrix
 def confusion_matrix(actual, predicted):
@@ -131,12 +129,14 @@ def confusion_matrix(actual, predicted):
         matrix[x][y] += 1
     return unique, matrix
 
+
 # pretty print a confusion matrix
 def print_confusion_matrix(unique, matrix):
     print('(P)' + ' '.join(str(x) for x in unique))
     print('(A)---')
     for i, x in enumerate(unique):
         print("%s| %s" % (x, ' '.join(str(x) for x in matrix[i])))
+
 
 def main(filename):
     split_ratio = 0.70
@@ -146,13 +146,14 @@ def main(filename):
     # prepare model
     summaries = summarize_by_class(training_set)
     # test model
-    predictions = get_predictions(summaries, test_set)
-    accuracy = get_accuracy(test_set, predictions)
+    test_set_list = test_set.values.tolist()
+    predictions = get_predictions(summaries, test_set_list)
+    accuracy = get_accuracy(test_set_list, predictions)
     print('Accuracy: {0}%').format(accuracy)
-
     #Confusion Matrix
-    unique, matrix = confusion_matrix(test_set,predictions)
+    unique, matrix = confusion_matrix(test_set_list,predictions)
     print_confusion_matrix(unique, matrix)
+
 
 if __name__ == '__main__':
     print 'Naive Bayes'
@@ -226,7 +227,3 @@ if __name__ == '__main__':
     '''
     filename = sys.argv[1]
     main(filename)
-
-
-
-
