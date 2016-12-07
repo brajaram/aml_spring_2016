@@ -7,7 +7,7 @@ import numpy as np
 
 def load_csv(filename):
     df = pd.read_csv(filename)
-    print '\nl type : ', type(df)
+    #print '\nl type : ', type(df)
     no_of_columns = len(df.columns)
     print '\nNumber of columns: ', no_of_columns
     for idx, name in enumerate(df.columns, start=1):
@@ -132,27 +132,35 @@ def confusion_matrix(actual, predicted):
 
 # pretty print a confusion matrix
 def print_confusion_matrix(unique, matrix):
-    print('(P)' + ' '.join(str(x) for x in unique))
-    print('(A)---')
+    print('\n')
+    header = '   ' + ' | '.join(str(x).ljust(5,' ') for x in unique) + '|' 
+    header_len = len(header)
+
+    print(header + '<--- predicted')
+    print('-' * header_len)
     for i, x in enumerate(unique):
-        print("%s| %s" % (x, ' '.join(str(x) for x in matrix[i])))
+        print("%s| %s|" % (x, ' | '.join(str(x).ljust(5,' ') for x in matrix[i])))
+        print('-' * header_len)
 
 
 def main(filename):
     split_ratio = 0.70
     dataset = load_csv(filename)
     training_set, test_set = split_dataset(dataset, split_ratio)
-    print('Split {0} rows into train={1} and test={2} rows').format(len(dataset), len(training_set), len(test_set))
+    print('\nSplit {0} rows into train={1} and test={2} rows').format(len(dataset), len(training_set), len(test_set))
+    last_col_idx = len(test_set.columns) - 1
     # prepare model
     summaries = summarize_by_class(training_set)
     # test model
     test_set_list = test_set.values.tolist()
     predictions = get_predictions(summaries, test_set_list)
-    accuracy = get_accuracy(test_set_list, predictions)
-    print('Accuracy: {0}%').format(accuracy)
+    y_val = test_set.iloc[:,last_col_idx].values.tolist()
+    accuracy = get_accuracy(y_val, predictions)
+    print('\nAccuracy: {0}%').format(accuracy)
     #Confusion Matrix
-    unique, matrix = confusion_matrix(test_set_list,predictions)
+    unique, matrix = confusion_matrix(y_val,predictions)
     print_confusion_matrix(unique, matrix)
+    print('\n')
 
 
 if __name__ == '__main__':
