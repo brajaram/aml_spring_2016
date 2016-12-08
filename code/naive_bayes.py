@@ -4,6 +4,9 @@ import random
 import math
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import itertools
+
 
 def load_csv(filename):
     df = pd.read_csv(filename)
@@ -64,9 +67,12 @@ def summarize_by_class(dataset):
 
 
 def calculate_probability(x, mean, stdev):
-    exponent = math.exp(-(math.pow(x-mean,2)/(2*math.pow(stdev,2))))
-    return (1 / (math.sqrt(2*math.pi) * stdev)) * exponent
-
+    if stdev > 0:
+        exponent = math.exp(-(math.pow(x-mean,2)/(2*math.pow(stdev,2))))
+    	output = (1 / (math.sqrt(2*math.pi) * stdev)) * exponent
+    else:
+        output = 0
+    return output
 
 def calculate_class_probabilities(summaries, input_vector):
     probabilities = {}
@@ -100,7 +106,7 @@ def get_predictions(summaries, test_set):
 def get_accuracy(test_set, predictions):
     correct = 0
     for x in xrange(len(test_set)):
-        if test_set[x][-1] == predictions[x]:
+        if test_set[x] == predictions[x]:
             correct += 1
     return (correct/float(len(test_set))) * 100.0
 
@@ -111,7 +117,7 @@ def confusion_matrix(actual, predicted):
     #print 'predicted : ', predicted
     actuals = []
     for x in range(len(actual)):
-        actuals.append(actual[x][-1])
+        actuals.append(actual[x])
     unique = set(actuals)
     matrix = [list() for x in range(len(unique))]
     for i in range(len(unique)):
@@ -143,6 +149,32 @@ def print_confusion_matrix(unique, matrix):
         print('-' * header_len)
 
 
+def plot_confusion_matrix(cm, classes,
+                          title='Confusion matrix',
+                          cmap=plt.cm.Blues):
+    """
+    This function prints and plots the confusion matrix.
+    Normalization can be applied by setting `normalize=True`.
+    """
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(len(classes))
+    plt.xticks(tick_marks, classes)
+    plt.yticks(tick_marks, classes)
+
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, cm[i, j],
+                 horizontalalignment="center",
+                 color="white" if cm[i, j] > thresh else "black")
+
+    plt.tight_layout()
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+    plt.show()
+
+
 def main(filename):
     split_ratio = 0.70
     dataset = load_csv(filename)
@@ -159,8 +191,9 @@ def main(filename):
     print('\nAccuracy: {0}%').format(accuracy)
     #Confusion Matrix
     unique, matrix = confusion_matrix(y_val,predictions)
-    print_confusion_matrix(unique, matrix)
-    print('\n')
+    #print_confusion_matrix(unique, matrix)
+    #print('\n')
+    plot_confusion_matrix(np.array(matrix),unique)
 
 
 if __name__ == '__main__':
@@ -234,4 +267,5 @@ if __name__ == '__main__':
     Run the algo for actual dataset
     '''
     filename = sys.argv[1]
+    #filename = r'../data/har_processed.csv'
     main(filename)
