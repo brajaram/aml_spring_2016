@@ -1,0 +1,419 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.NaiveBayes 
+Relation:     har_processed_hdr
+Instances:    39242
+Attributes:   53
+              roll_belt
+              pitch_belt
+              yaw_belt
+              total_accel_belt
+              gyros_belt_x
+              gyros_belt_y
+              gyros_belt_z
+              accel_belt_x
+              accel_belt_y
+              accel_belt_z
+              magnet_belt_x
+              magnet_belt_y
+              magnet_belt_z
+              roll_arm
+              pitch_arm
+              yaw_arm
+              total_accel_arm
+              gyros_arm_x
+              gyros_arm_y
+              gyros_arm_z
+              accel_arm_x
+              accel_arm_y
+              accel_arm_z
+              magnet_arm_x
+              magnet_arm_y
+              magnet_arm_z
+              roll_dumbbell
+              pitch_dumbbell
+              yaw_dumbbell
+              total_accel_dumbbell
+              gyros_dumbbell_x
+              gyros_dumbbell_y
+              gyros_dumbbell_z
+              accel_dumbbell_x
+              accel_dumbbell_y
+              accel_dumbbell_z
+              magnet_dumbbell_x
+              magnet_dumbbell_y
+              magnet_dumbbell_z
+              roll_forearm
+              pitch_forearm
+              yaw_forearm
+              total_accel_forearm
+              gyros_forearm_x
+              gyros_forearm_y
+              gyros_forearm_z
+              accel_forearm_x
+              accel_forearm_y
+              accel_forearm_z
+              magnet_forearm_x
+              magnet_forearm_y
+              magnet_forearm_z
+              classe
+Test mode:    split 70.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Naive Bayes Classifier
+
+                          Class
+Attribute                     E        A        D        B        C
+                         (0.18)   (0.28)   (0.16)   (0.19)   (0.17)
+====================================================================
+roll_belt
+  mean                   74.1826  60.4395  62.1506  65.0839  64.9806
+  std. dev.              70.5503  60.1978   61.304   59.981    60.98
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.1107   0.1107   0.1107   0.1107   0.1107
+
+pitch_belt
+  mean                    0.4959   0.4338   1.7028   0.3897  -0.8312
+  std. dev.              19.5848  23.7928  21.3129  23.3779  22.6595
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.0556   0.0556   0.0556   0.0556   0.0556
+
+yaw_belt
+  mean                   -5.9254 -10.9816 -16.1867 -13.5292  -7.7301
+  std. dev.               88.117 100.0307  89.7962  95.2979  97.4986
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.1618   0.1618   0.1618   0.1618   0.1618
+
+total_accel_belt
+  mean                   12.6659  10.8053  11.3719  11.1497  11.2189
+  std. dev.               9.1354   7.3071   7.1487   7.4846   7.4317
+  weight sum                7214    11159     6432     7593     6844
+  precision                    1        1        1        1        1
+
+gyros_belt_x
+  mean                    0.0054  -0.0051  -0.0139  -0.0098  -0.0185
+  std. dev.               0.2803   0.1743   0.1926   0.1971   0.1887
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.0204   0.0204   0.0204   0.0204   0.0204
+
+gyros_belt_y
+  mean                    0.0381     0.04   0.0372   0.0404   0.0371
+  std. dev.               0.1105   0.0608   0.0972   0.0593   0.0581
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.0171   0.0171   0.0171   0.0171   0.0171
+
+gyros_belt_z
+  mean                   -0.1323  -0.1236  -0.1359  -0.1359  -0.1367
+  std. dev.               0.3624   0.1424   0.3409   0.1491   0.1496
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.0181   0.0181   0.0181   0.0181   0.0181
+
+accel_belt_x
+  mean                   -4.2402  -6.1564  -8.0968  -5.4557  -4.2488
+  std. dev.              31.4563  29.7731  27.8748  29.6115   29.261
+  weight sum                7214    11159     6432     7593     6844
+  precision                1.314    1.314    1.314    1.314    1.314
+
+accel_belt_y
+  mean                   28.8941  29.4598  31.0502  31.9938  31.2453
+  std. dev.              28.8365  28.0461  30.0036  28.4222  28.3783
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.4596   1.4596   1.4596   1.4596   1.4596
+
+accel_belt_z
+  mean                  -91.1634 -64.4324 -70.8318 -73.4319 -71.2758
+  std. dev.             111.4592  98.1429  97.5008  95.2694  97.5643
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.2396   1.2396   1.2396   1.2396   1.2396
+
+magnet_belt_x
+  mean                   64.7925  58.0473  49.1147  48.1494   56.946
+  std. dev.              77.9987  62.1866  57.3516  62.3627  60.2668
+  weight sum                7214    11159     6432     7593     6844
+  precision                1.399    1.399    1.399    1.399    1.399
+
+magnet_belt_y
+  mean                  567.9168 602.2341 595.2477 599.6246  599.978
+  std. dev.              50.1717  20.6711  47.8852  18.5917  20.6302
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.0421   1.0421   1.0421   1.0421   1.0421
+
+magnet_belt_z
+  mean                 -378.2983-337.8987-339.0461  -336.41-337.7593
+  std. dev.             100.4373  44.2771   69.975  44.6496  44.3242
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.8218   1.8218   1.8218   1.8218   1.8218
+
+roll_arm
+  mean                   19.7256  -0.2435  21.3663  31.5473   24.896
+  std. dev.              73.9948  84.5667  55.9661   73.186  56.8005
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.1135   0.1135   0.1135   0.1135   0.1135
+
+pitch_arm
+  mean                  -11.8396   3.4723 -10.1207  -6.1701  -1.4854
+  std. dev.              24.9258  34.7614  26.3034  31.9623  27.8552
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.0515   0.0515   0.0515   0.0515   0.0515
+
+yaw_arm
+  mean                   -2.5228 -12.4653   3.8698   8.1209    5.142
+  std. dev.              62.0952  87.6216  52.9182  68.8074  67.8733
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.1073   0.1073   0.1073   0.1073   0.1073
+
+total_accel_arm
+  mean                   24.8364   27.411  23.1485  26.5257  24.1778
+  std. dev.              11.5257   9.0475  10.3855  10.9581  10.2638
+  weight sum                7214    11159     6432     7593     6844
+  precision                    1        1        1        1        1
+
+gyros_arm_x
+  mean                    0.0426   0.0407   0.0789    0.018   0.0937
+  std. dev.               2.4706   1.3302   1.9301    2.319   1.9528
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.0172   0.0172   0.0172   0.0172   0.0172
+
+gyros_arm_y
+  mean                   -0.2868  -0.2318  -0.2665  -0.2817  -0.2583
+  std. dev.               1.0527   0.5786    0.663   1.0872   0.8286
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.0164   0.0164   0.0164   0.0164   0.0164
+
+gyros_arm_z
+  mean                    0.2796   0.2758   0.2721   0.2623    0.273
+  std. dev.               0.5963    0.494   0.5361   0.5764   0.5737
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.0206   0.0206   0.0206   0.0206   0.0206
+
+accel_arm_x
+  mean                  -21.2748 -132.074  13.0894 -45.3536 -78.3771
+  std. dev.             157.5808 185.4272 179.4505  173.564 170.1494
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.0867   1.0867   1.0867   1.0867   1.0867
+
+accel_arm_y
+  mean                   17.0992  45.6591  23.7202  27.2673  41.9082
+  std. dev.             117.5166 100.9847  102.584 118.6808 107.8204
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.1418   1.1418   1.1418   1.1418   1.1418
+
+accel_arm_z
+  mean                    -77.39 -73.8816 -45.5994 -92.8168 -51.2572
+  std. dev.             163.1168 102.0006 127.5894  153.195 123.0347
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.1283   1.1283   1.1283   1.1283   1.1283
+
+magnet_arm_x
+  mean                  312.8947 -18.7846 394.3407 224.3385 154.1492
+  std. dev.             399.6046 441.5794 376.9626  424.951 419.6579
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.0096   1.0096   1.0096   1.0096   1.0096
+
+magnet_arm_y
+  mean                   86.9044 235.3934 100.2328 135.7931 192.5425
+  std. dev.             213.0861 168.6375 163.3073 226.3888  188.672
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.0943   1.0943   1.0943   1.0943   1.0943
+
+magnet_arm_z
+  mean                  217.3785  413.094 303.3511 203.1782 368.3334
+  std. dev.             371.8398 240.3453 283.5445 386.6113 285.7289
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.0172   1.0172   1.0172   1.0172   1.0172
+
+roll_dumbbell
+  mean                   27.6902  21.0613  49.6767  35.4096 -12.4094
+  std. dev.              74.1711  59.3532  53.6788  72.6852  76.3858
+  weight sum                7214    11158     6432     7593     6844
+  precision                 0.01     0.01     0.01     0.01     0.01
+
+pitch_dumbbell
+  mean                   -6.9239 -18.8899  -2.8606    2.961 -24.5382
+  std. dev.              37.1595  34.3514  36.2246    41.27   28.564
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.0101   0.0101   0.0101   0.0101   0.0101
+
+yaw_dumbbell
+  mean                    5.1228   1.8498  -0.9635  14.2325 -15.8543
+  std. dev.              76.5044  90.7118  84.4367  73.7102  78.5927
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.0102   0.0102   0.0102   0.0102   0.0102
+
+total_accel_dumbbell
+  mean                   14.5218  14.6531  11.4863  14.3431  12.9253
+  std. dev.               9.1759  12.2844   9.7039   8.8206   9.4426
+  weight sum                7214    11159     6432     7593     6844
+  precision                1.381    1.381    1.381    1.381    1.381
+
+gyros_dumbbell_x
+  mean                    0.1067   0.0994   0.1685   0.1834   0.1681
+  std. dev.               0.4743   1.9577   0.4843   0.5474   0.3432
+  weight sum                7214    11159     6432     7593     6844
+  precision                  0.8      0.8      0.8      0.8      0.8
+
+gyros_dumbbell_y
+  mean                    0.1229   0.0307    0.019   0.0062   0.0613
+  std. dev.               0.7199   0.5483   0.3101   0.6837   0.2981
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.1853   0.1853   0.1853   0.1853   0.1853
+
+gyros_dumbbell_z
+  mean                    -0.064   0.0036  -0.0162   -0.102  -0.0667
+  std. dev.               0.4103   3.0024   0.2376   0.4697   0.3311
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.4258   1.4258   1.4258   1.4258   1.4258
+
+accel_dumbbell_x
+  mean                  -18.0951 -50.3612 -23.7418  -1.2025 -40.4563
+  std. dev.              65.0533  72.4073  54.9986  70.7186  54.5876
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.4864   1.4864   1.4864   1.4864   1.4864
+
+accel_dumbbell_y
+  mean                   57.6405  52.4083  53.8607   68.271  31.2206
+  std. dev.              94.4825  67.0006  66.3255  91.2705  81.3716
+  weight sum                7214    11159     6432     7593     6844
+  precision                 1.05     1.05     1.05     1.05     1.05
+
+accel_dumbbell_z
+  mean                  -25.3073 -55.1638 -36.0533 -15.9529 -52.3002
+  std. dev.             104.3546 129.6389  97.7705  94.9964  98.5845
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.5365   1.5365   1.5365   1.5365   1.5365
+
+magnet_dumbbell_x
+  mean                 -288.7387-386.0735-318.9901-248.0974-365.7235
+  std. dev.             317.8506 332.8697 346.4593  328.823 364.8923
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.0232   1.0232   1.0232   1.0232   1.0232
+
+magnet_dumbbell_y
+  mean                  238.8827 218.7701 220.0311 262.3758 156.6471
+  std. dev.             360.4488 275.9453 328.1376 369.4793 306.5484
+  weight sum                7214    11159     6432     7593     6844
+  precision               4.8007   4.8007   4.8007   4.8007   4.8007
+
+magnet_dumbbell_z
+  mean                   73.5802   9.7732   53.244  45.7218   63.246
+  std. dev.             132.8346 146.2783 131.3759 159.4049 104.6319
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.0273   1.0273   1.0273   1.0273   1.0273
+
+roll_forearm
+  mean                   39.7794  24.7312   16.653   33.664  58.2761
+  std. dev.             118.9428  78.5563 126.9532 112.9395 107.3106
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.1318   0.1318   0.1318   0.1318   0.1318
+
+pitch_forearm
+  mean                   16.8501  -6.1853  28.4685  14.7518  12.7197
+  std. dev.              19.1318  36.3185   20.533  21.2436  17.4433
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.0494   0.0494   0.0494   0.0494   0.0494
+
+yaw_forearm
+  mean                   11.0531  23.0373   3.2241  14.7546   39.632
+  std. dev.             102.5943 106.9174 109.8196 100.3106  91.5506
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.1499   0.1499   0.1499   0.1499   0.1499
+
+total_accel_forearm
+  mean                   36.6072  31.9528  36.1697  35.2518   35.034
+  std. dev.               9.9552  10.9743   8.4643   10.317   8.8719
+  weight sum                7214    11159     6432     7593     6844
+  precision                 1.44     1.44     1.44     1.44     1.44
+
+gyros_forearm_x
+  mean                    0.1434   0.1969   0.1451   0.0959   0.2086
+  std. dev.                0.723   0.6612    0.533   3.9749   0.6189
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.0676   1.0676   1.0676   1.0676   1.0676
+
+gyros_forearm_y
+  mean                    0.0889   0.1152   0.0316   0.1471   0.0982
+  std. dev.               2.6577   3.3385   2.1127   6.4568   2.0462
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.6793   0.6793   0.6793   0.6793   0.6793
+
+gyros_forearm_z
+  mean                    0.1605   0.1395    0.133    0.165   0.1504
+  std. dev.               0.7372   2.2538   0.5635   0.9733   0.5762
+  weight sum                7214    11159     6432     7593     6844
+  precision               0.8132   0.8132   0.8132   0.8132   0.8132
+
+accel_forearm_x
+  mean                  -70.9951  -4.3301-157.9414 -76.3074 -51.7142
+  std. dev.             189.2089 182.7661 148.9177 172.1861 165.2637
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.1828   1.1828   1.1828   1.1828   1.1828
+
+accel_forearm_y
+  mean                  145.7686 169.5913 151.2079 135.6991 211.8021
+  std. dev.             231.5088 157.1511 202.8435 234.4106 168.2857
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.5554   1.5554   1.5554   1.5554   1.5554
+
+accel_forearm_z
+  mean                  -58.0869 -57.7589 -51.0927 -48.5903  -60.783
+  std. dev.             137.9965 139.5352 137.2208 135.6581 136.3419
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.2003   1.2003   1.2003   1.2003   1.2003
+
+magnet_forearm_x
+  mean                 -331.3255-200.7569-461.1224-326.0481-343.8871
+  std. dev.             365.9134 362.8779 317.5356  285.896 319.5966
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.2192   1.2192   1.2192   1.2192   1.2192
+
+magnet_forearm_y
+  mean                  279.2384 476.0736 314.8986 275.2656 505.5635
+  std. dev.             578.0741 426.2601 485.8004 579.9978 415.9313
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.2395   1.2395   1.2395   1.2395   1.2395
+
+magnet_forearm_z
+  mean                   355.062 404.8517 370.4297 381.2537 459.4396
+  std. dev.             388.3206 354.5201 343.3188 394.5135 350.4266
+  weight sum                7214    11159     6432     7593     6844
+  precision               1.1577   1.1577   1.1577   1.1577   1.1577
+
+
+
+Time taken to build model: 0.32 seconds
+
+=== Evaluation on test split ===
+
+Time taken to test model on training split: 0.59 seconds
+
+=== Summary ===
+
+Correctly Classified Instances        5931               50.378  %
+Incorrectly Classified Instances      5842               49.622  %
+Kappa statistic                          0.3866
+Mean absolute error                      0.2051
+Root mean squared error                  0.399 
+Relative absolute error                 64.8624 %
+Root relative squared error            100.3395 %
+Total Number of Instances            11773     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.611    0.102    0.576      0.611    0.593      0.497    0.853     0.612     E
+                 0.397    0.039    0.800      0.397    0.531      0.464    0.809     0.694     A
+                 0.496    0.140    0.411      0.496    0.449      0.330    0.778     0.462     D
+                 0.366    0.028    0.757      0.366    0.493      0.457    0.861     0.649     B
+                 0.728    0.296    0.339      0.728    0.462      0.338    0.810     0.481     C
+Weighted Avg.    0.504    0.110    0.607      0.504    0.510      0.425    0.822     0.595     
+
+=== Confusion Matrix ===
+
+    a    b    c    d    e   <-- classified as
+ 1328   66  307  150  324 |    a = E
+  180 1330  559   31 1247 |    b = A
+  280    2  962    6  689 |    c = D
+  355  187  288  836  621 |    d = B
+  164   77  227   82 1475 |    e = C
+

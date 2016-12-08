@@ -1,0 +1,217 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.Logistic -R 1.0E-8 -M -1 -num-decimal-places 4
+Relation:     har_processed_hdr
+Instances:    39242
+Attributes:   53
+              roll_belt
+              pitch_belt
+              yaw_belt
+              total_accel_belt
+              gyros_belt_x
+              gyros_belt_y
+              gyros_belt_z
+              accel_belt_x
+              accel_belt_y
+              accel_belt_z
+              magnet_belt_x
+              magnet_belt_y
+              magnet_belt_z
+              roll_arm
+              pitch_arm
+              yaw_arm
+              total_accel_arm
+              gyros_arm_x
+              gyros_arm_y
+              gyros_arm_z
+              accel_arm_x
+              accel_arm_y
+              accel_arm_z
+              magnet_arm_x
+              magnet_arm_y
+              magnet_arm_z
+              roll_dumbbell
+              pitch_dumbbell
+              yaw_dumbbell
+              total_accel_dumbbell
+              gyros_dumbbell_x
+              gyros_dumbbell_y
+              gyros_dumbbell_z
+              accel_dumbbell_x
+              accel_dumbbell_y
+              accel_dumbbell_z
+              magnet_dumbbell_x
+              magnet_dumbbell_y
+              magnet_dumbbell_z
+              roll_forearm
+              pitch_forearm
+              yaw_forearm
+              total_accel_forearm
+              gyros_forearm_x
+              gyros_forearm_y
+              gyros_forearm_z
+              accel_forearm_x
+              accel_forearm_y
+              accel_forearm_z
+              magnet_forearm_x
+              magnet_forearm_y
+              magnet_forearm_z
+              classe
+Test mode:    split 60.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                          Class
+Variable                      E        A        D        B
+==========================================================
+roll_belt                0.0991  -0.3074   -0.265   0.0296
+pitch_belt               0.1593   0.3912  -0.0233  -0.1794
+yaw_belt                  0.031   0.2449   0.0332  -0.0002
+total_accel_belt         0.3109   0.3886   0.4859  -0.1593
+gyros_belt_x            -0.3343  -1.1807  -0.5065  -1.0415
+gyros_belt_y             -3.672   0.0597   1.8883  -2.6602
+gyros_belt_z              1.744  -0.3111  -0.3897   1.6618
+accel_belt_x             -0.025  -0.0022  -0.0394   0.0172
+accel_belt_y            -0.1617  -0.0529  -0.0474  -0.0077
+accel_belt_z             0.0406   0.0323  -0.0754   0.0122
+magnet_belt_x            0.0248   0.0213   0.0064  -0.0278
+magnet_belt_y           -0.0538   0.0677  -0.0261   0.0405
+magnet_belt_z           -0.0035  -0.0796  -0.0006  -0.0229
+roll_arm                -0.0076  -0.0079  -0.0098  -0.0042
+pitch_arm               -0.0013   0.0099  -0.0094   0.0104
+yaw_arm                 -0.0024  -0.0051   0.0003   0.0002
+total_accel_arm          0.0259   0.0304   0.0836  -0.0234
+gyros_arm_x              0.0746  -0.2307  -0.0451  -0.1715
+gyros_arm_y             -0.2137  -0.4527  -0.3719  -0.6231
+gyros_arm_z             -0.2025  -0.0465  -0.2212  -0.2515
+accel_arm_x               0.002   0.0125   0.0115  -0.0109
+accel_arm_y              0.0152   0.0095  -0.0176   0.0122
+accel_arm_z              0.0102  -0.0163   0.0128   0.0064
+magnet_arm_x            -0.0036  -0.0019  -0.0028   0.0008
+magnet_arm_y            -0.0145  -0.0018   -0.002   0.0008
+magnet_arm_z            -0.0016   0.0088   0.0027  -0.0106
+roll_dumbbell            0.0047  -0.0027   0.0079  -0.0019
+pitch_dumbbell           0.0047   0.0215   0.0153   0.0092
+yaw_dumbbell             0.0034   0.0269   0.0055   0.0085
+total_accel_dumbbell     0.1943  -0.0905  -0.1533    0.079
+gyros_dumbbell_x        -0.9139  -1.2089  -0.4045  -0.7891
+gyros_dumbbell_y         -0.854  -1.4614  -0.4715  -1.0943
+gyros_dumbbell_z        -0.3456   -0.252  -0.0825  -0.4083
+accel_dumbbell_x         0.0023  -0.0489  -0.0346  -0.0184
+accel_dumbbell_y          0.008  -0.0044   0.0176    0.014
+accel_dumbbell_z         0.0208    0.011   0.0009   0.0251
+magnet_dumbbell_x       -0.0032   0.0124   0.0042   0.0075
+magnet_dumbbell_y        0.0072   0.0137   0.0033   0.0065
+magnet_dumbbell_z       -0.0144  -0.0603  -0.0092  -0.0402
+roll_forearm             0.0015  -0.0031  -0.0012   0.0006
+pitch_forearm            0.0103  -0.0144   0.0298  -0.0025
+yaw_forearm             -0.0004   0.0009  -0.0037  -0.0005
+total_accel_forearm       0.055  -0.0529  -0.0089   0.0048
+gyros_forearm_x          -0.531  -0.4072  -0.2958  -0.4003
+gyros_forearm_y         -0.1056   -0.033  -0.0126  -0.0422
+gyros_forearm_z          0.3038   -0.049  -0.0657    0.031
+accel_forearm_x          0.0129  -0.0022  -0.0148   0.0064
+accel_forearm_y          0.0006  -0.0008   0.0026   0.0007
+accel_forearm_z         -0.0024   0.0189   0.0038   0.0164
+magnet_forearm_x        -0.0047   0.0031    0.005  -0.0017
+magnet_forearm_y         -0.003   0.0006   0.0009  -0.0018
+magnet_forearm_z        -0.0023  -0.0025  -0.0007  -0.0037
+Intercept               26.3965 -40.9396  24.0948 -21.1136
+
+
+Odds Ratios...
+                          Class
+Variable                      E        A        D        B
+==========================================================
+roll_belt                1.1042   0.7354   0.7672     1.03
+pitch_belt               1.1727   1.4788   0.9769   0.8358
+yaw_belt                 1.0315   1.2775   1.0337   0.9998
+total_accel_belt         1.3646    1.475   1.6257   0.8527
+gyros_belt_x             0.7158   0.3071   0.6026   0.3529
+gyros_belt_y             0.0254   1.0615   6.6082   0.0699
+gyros_belt_z             5.7199   0.7326   0.6772    5.269
+accel_belt_x             0.9753   0.9978   0.9614   1.0174
+accel_belt_y             0.8507   0.9485   0.9537   0.9923
+accel_belt_z             1.0414   1.0328   0.9274   1.0123
+magnet_belt_x            1.0251   1.0216   1.0064   0.9726
+magnet_belt_y            0.9476     1.07   0.9742   1.0413
+magnet_belt_z            0.9965   0.9235   0.9994   0.9774
+roll_arm                 0.9924   0.9921   0.9903   0.9959
+pitch_arm                0.9987     1.01   0.9906   1.0105
+yaw_arm                  0.9976   0.9949   1.0003   1.0002
+total_accel_arm          1.0262   1.0309   1.0872   0.9768
+gyros_arm_x              1.0774    0.794   0.9559   0.8424
+gyros_arm_y              0.8076   0.6359   0.6894   0.5363
+gyros_arm_z              0.8167   0.9545   0.8016   0.7777
+accel_arm_x               1.002   1.0126   1.0116   0.9892
+accel_arm_y              1.0153   1.0096   0.9826   1.0123
+accel_arm_z              1.0103   0.9838   1.0129   1.0065
+magnet_arm_x             0.9964   0.9981   0.9973   1.0008
+magnet_arm_y             0.9856   0.9982    0.998   1.0008
+magnet_arm_z             0.9984   1.0088   1.0028   0.9895
+roll_dumbbell            1.0047   0.9973   1.0079   0.9981
+pitch_dumbbell           1.0047   1.0217   1.0154   1.0093
+yaw_dumbbell             1.0034   1.0273   1.0055   1.0086
+total_accel_dumbbell     1.2145   0.9134   0.8579   1.0822
+gyros_dumbbell_x         0.4009   0.2985   0.6673   0.4543
+gyros_dumbbell_y         0.4257   0.2319   0.6241   0.3348
+gyros_dumbbell_z         0.7078   0.7773   0.9208   0.6648
+accel_dumbbell_x         1.0023   0.9523    0.966   0.9817
+accel_dumbbell_y         1.0081   0.9956   1.0177   1.0141
+accel_dumbbell_z          1.021   1.0111   1.0009   1.0254
+magnet_dumbbell_x        0.9968   1.0125   1.0042   1.0075
+magnet_dumbbell_y        1.0072   1.0138   1.0033   1.0065
+magnet_dumbbell_z        0.9857   0.9415   0.9909   0.9606
+roll_forearm             1.0015   0.9969   0.9988   1.0006
+pitch_forearm            1.0103   0.9857   1.0303   0.9975
+yaw_forearm              0.9996   1.0009   0.9963   0.9995
+total_accel_forearm      1.0565   0.9485   0.9911   1.0048
+gyros_forearm_x           0.588   0.6655   0.7439   0.6701
+gyros_forearm_y          0.8998   0.9676   0.9875   0.9586
+gyros_forearm_z           1.355   0.9522   0.9364   1.0315
+accel_forearm_x           1.013   0.9978   0.9853   1.0064
+accel_forearm_y          1.0006   0.9992   1.0026   1.0007
+accel_forearm_z          0.9976   1.0191   1.0038   1.0165
+magnet_forearm_x         0.9953   1.0031    1.005   0.9983
+magnet_forearm_y          0.997   1.0006   1.0009   0.9982
+magnet_forearm_z         0.9977   0.9975   0.9993   0.9963
+
+
+Time taken to build model: 52.3 seconds
+
+=== Evaluation on test split ===
+
+Time taken to test model on training split: 0.07 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       11668               74.3327 %
+Incorrectly Classified Instances      4029               25.6673 %
+Kappa statistic                          0.6748
+Mean absolute error                      0.1466
+Root mean squared error                  0.2699
+Relative absolute error                 46.3428 %
+Root relative squared error             67.8773 %
+Total Number of Instances            15697     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.685    0.041    0.795      0.685    0.736      0.683    0.924     0.819     E
+                 0.866    0.080    0.811      0.866    0.837      0.771    0.965     0.918     A
+                 0.721    0.054    0.725      0.721    0.723      0.669    0.936     0.777     D
+                 0.653    0.070    0.689      0.653    0.671      0.596    0.912     0.734     B
+                 0.727    0.079    0.660      0.727    0.692      0.624    0.933     0.710     C
+Weighted Avg.    0.743    0.066    0.744      0.743    0.742      0.679    0.937     0.805     
+
+=== Confusion Matrix ===
+
+    a    b    c    d    e   <-- classified as
+ 2014  128  240  395  164 |    a = E
+   32 3855  182  147  236 |    b = A
+  126  172 1853  115  305 |    c = D
+  246  381   97 1961  317 |    d = B
+  115  220  184  227 1985 |    e = C
+

@@ -192,9 +192,18 @@ def confusion_matrix(actual, predicted):
         matrix[x][y] += 1
     return unique, matrix
 
-# pretty print a confusion matrix
+
+'''
+Prints confusion matrix
+It will work for n dimention
+'''
 def print_confusion_matrix(unique, matrix):
-    print('(P)' + ' '.join(str(x) for x in unique))
-    print('(A)---')
+    print('\n')
+    header = '   ' + ' | '.join(str(x).ljust(5,' ') for x in unique) + '|'
+    header_len = len(header)
+
+    print(header + '<--- predicted')
+    print('-' * header_len)
     for i, x in enumerate(unique):
-        print("%s| %s" % (x, ' '.join(str(x) for x in matrix[i])))
+        print("%s| %s|" % (x, ' | '.join(str(x).ljust(5,' ') for x in matrix[i])))
+        print('-' * header_len)
