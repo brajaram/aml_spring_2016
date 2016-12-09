@@ -1,6 +1,4 @@
-import csv
 import sys
-import random
 import math
 import pandas as pd
 import numpy as np
@@ -50,8 +48,6 @@ def stdev(numbers):
 def summarize(dataset):
     #The zip function groups the values for each attribute across our data instances into their own lists
     summaries = [(mean(attribute), stdev(attribute)) for attribute in zip(*dataset)]
-
-    #What is this for?
     del summaries[-1]
     return summaries
 
@@ -198,74 +194,5 @@ def main(filename):
 
 if __name__ == '__main__':
     print 'Naive Bayes'
-    '''
-    test_dataset = [[1, 20, 1], [2, 21, 0], [3, 22, 1]]
-    separated = separate_by_class(test_dataset)
-    print('Separated instances: {0}').format(separated)
-
-    #Test mean and stdev
-    test_numbers = [1, 2, 3, 4, 5]
-    print('Summary of {0}: mean={1}, stdev={2}').format(test_numbers, mean(test_numbers), stdev(test_numbers))
-
-    # Test summarize
-    test_dataset = [[1, 20, 0], [2, 21, 1], [3, 22, 0]]
-    summary = summarize(test_dataset)
-    print('Attribute summaries: {0}').format(summary)
-
-    #Test summarize_by_class
-    test_dataset = [[1, 20, 1], [2, 21, 0], [3, 22, 1], [4, 22, 0], [5, 23, 0]]
-    summary = summarize_by_class(test_dataset)
-    #summary = summarize(test_dataset)
-    print('Summary by class value: {0}').format(summary)
-
-
-    #Test calculate_probability
-    x = 71.5
-    mean = 73
-    stdev = 6.2
-    probability = calculate_probability(x, mean, stdev)
-    print('Probability of belonging to this class: {0}').format(probability)
-
-    #Test calculate_class_probabilities
-    summaries = {0: [(1, 0.5)], 1: [(20, 5.0)]}
-    input_vector = [1.1, '?']
-    probabilities = calculate_class_probabilities(summaries, input_vector)
-    print('Probabilities for each class: {0}').format(probabilities)
-
-    #Test predict()
-    summaries = {'A': [(1, 0.5)], 'B': [(20, 5.0)]}
-    #input_vector = [1.1, '?']
-    input_vector = [1.1, '?']
-    result = predict(summaries, input_vector)
-    print('Prediction: {0}').format(result)
-
-    #Test get_prediction()
-    summaries = {'A': [(1, 0.5)], 'B': [(20, 5.0)]}
-    test_set = [[1.1, '?'], [19.1, '?']]
-    predictions = get_predictions(summaries, test_set)
-    print('Predictions: {0}').format(predictions)
-
-    #Test get_accuracy()
-    test_set = [[1, 1, 1, 'a'], [2, 2, 2, 'a'], [3, 3, 3, 'b']]
-    predictions = ['a', 'a', 'a']
-    accuracy = get_accuracy(test_set, predictions)
-    print('Accuracy: {0}').format(accuracy)
-    '''
-
-
-    '''
-    # Test confusion matrix with integers
-    actual = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1,3,5]
-    predicted = [0, 1, 1, 0, 0, 1, 0, 1, 1, 1,0,5]
-    unique, matrix = confusion_matrix(actual, predicted)
-    print(unique)
-    print(matrix)
-    print_confusion_matrix(unique, matrix)
-    '''
-
-    '''
-    Run the algo for actual dataset
-    '''
     filename = sys.argv[1]
-    #filename = r'../data/har_processed.csv'
     main(filename)
